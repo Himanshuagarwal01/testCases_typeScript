@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Formikform from "./Formikform";
+import NestedCondition from "./NestedCondition";
+import Mocc from "./Mocc";
 interface iState {
   isOpen: boolean;
 }
@@ -18,6 +20,8 @@ export default class App extends Component<any, iState> {
           Primary
         </Button> */}
         <Formikform />
+        <NestedCondition />
+        <Mocc />
       </div>
     );
   }

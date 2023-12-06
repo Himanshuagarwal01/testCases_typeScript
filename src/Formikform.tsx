@@ -32,11 +32,12 @@ export default class Formikform extends Component<any, State> {
     submitValues: undefined,
   };
 
-  handleSubmit = (values: any) => {
+  handleSubmit = (values: any, {resetForm}:any) => {
     console.log(values);
     this.setState({
       submitValues: values,
     });
+    resetForm();
     return values;
   };
 
