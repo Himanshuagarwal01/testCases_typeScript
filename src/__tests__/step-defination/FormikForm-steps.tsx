@@ -20,18 +20,22 @@ defineFeature(feature, (test) => {
     then("render the component with valid values", () => {
       wrapperApp = shallow(<Formikform />);
       wrapperApp
-        .find('#email1')
+        .find("#email1")
         .simulate("change", { target: { value: "test@gmail.com" } });
       wrapperApp
-        .find('#password1')
+        .find("#password1")
         .simulate("change", { target: { value: "12345" } });
 
       wrapperApp.find("#submit").simulate("submit");
+      const resetFormMock = jest.fn();
       const formikTest = wrapperApp.findWhere(
         (node) => node.prop("data-testid") === "formiktest"
       );
       expect(
-        instance.handleSubmit({ email: "test@gmail.com", password: "12345" })
+        instance.handleSubmit(
+          { email: "test@gmail.com", password: "12345" },
+          { resetForm: resetFormMock }
+        )
       ).toEqual({ email: "test@gmail.com", password: "12345" });
       expect(instance.state.submitValues).toEqual({
         email: "test@gmail.com",
